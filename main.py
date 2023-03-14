@@ -118,12 +118,23 @@ while dead == False:
             if fight_with in backpack:
 
                 if inhabitant.fight(fight_with) == True:
+                    if inhabitant.name == "Farenyuk":
+                        if len(friends) < 3:
+                            print("not enough friends:( you died")
+                            dead = True
                     # What happens if you win?
-                    print("Hooray, you won the fight!")
-                    current_room.character = None
-                    if inhabitant.get_defeated() == 2:
-                        print("Congratulations, you have vanquished the enemy horde!")
-                        dead = True
+                        else:
+                            print("Hooray, you won the fight!")
+                            current_room.character = None
+                            if inhabitant.get_defeated() == 2:
+                                print("Congratulations, you have vanquished the enemy horde!")
+                                dead = True
+                    else:
+                        print("Hooray, you won the fight!")
+                        current_room.character = None
+                        if inhabitant.get_defeated() == 2:
+                            print("Congratulations, you have vanquished the enemy horde!")
+                            dead = True
                 else:
                     # What happens if you lose?
                     print("Oh dear, you lost the fight.")
@@ -140,7 +151,7 @@ while dead == False:
             current_room.set_item(None)
         else:
             print("There's nothing here to take!")
-    elif command == "friend":
+    elif command == "friendship":
         if inhabitant is not None and isinstance(inhabitant, game.Friend):
             print("Make a friendship? y/n")
             answer = input('> ')
