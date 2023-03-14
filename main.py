@@ -1,30 +1,30 @@
 import game
 
-trapezna = game.Room("Trapezna", 1)
+trapezna = game.Room("Trapezna", 1, 1)
 trapezna.set_description("The place where everyone become happier or not because of food, 1st floor")
 
-hall_1 = game.Room("Hall_1", 1)
+hall_1 = game.Room("Hall_1", 1, 0)
 hall_1.set_description("Choose your side: Trapezna or Cafe?, 1st floor")
 
-cafe = game.Room("Cafe", 1)
+cafe = game.Room("Cafe", 1, 2)
 cafe.set_description("Wanna coffee with a cinnabon? You're welcome, 1st floor")
 
-it_space = game.Room("Ballroom", 0)
+it_space = game.Room("IT SPACE", 0, 2)
 it_space.set_description("A special space for apps faculty. Some people call it psycho clinic, 0th floor")
 
-hall_0 = game.Room("Hall_0", 0)
+hall_0 = game.Room("Hall_0", 0,0)
 hall_0.set_description("You can go to main it space or lecture room, 0th floor")
 
-lectrure_room = game.Room("Lecture Room", 0)
+lectrure_room = game.Room("Lecture Room", 0, 1)
 lectrure_room.set_description("Multi-functional space. For lectures, games, chill(not often), 0th floor")
 
-room_308 = game.Room("Room 308", 3)
+room_308 = game.Room("Room 308", 3, 2)
 room_308.set_description("Everyone knows where mathimatical analysis consultation is..., 3rd floor")
 
-hall_3 = game.Room("Hall 3", 3)
+hall_3 = game.Room("Hall 3", 3, 0)
 hall_3.set_description("Documents in deanery or math analysis?), 3rd floor")
 
-deanery = game.Room("Deanery", 3)
+deanery = game.Room("Deanery", 3, 1)
 deanery.set_description("Wanna meet with your documents?:), 3rd floor")
 
 trapezna.link_room(hall_1, "west")
@@ -32,13 +32,13 @@ hall_1.link_room(trapezna, "east")
 hall_1.link_room(cafe, "north")
 cafe.link_room(hall_1, "south")
 
-it_space.link_room(hall_0, "north")
-hall_0.link_room(it_space, "south")
+it_space.link_room(hall_0, "south")
+hall_0.link_room(it_space, "north")
 hall_0.link_room(lectrure_room, "east")
 lectrure_room.link_room(hall_0, "west")
 
-room_308.link_room(hall_3, "north")
-hall_3.link_room(room_308, "south")
+room_308.link_room(hall_3, "south")
+hall_3.link_room(room_308, "north")
 hall_3.link_room(deanery, "south")
 deanery.link_room(hall_3, "north")
 
@@ -79,6 +79,7 @@ documents.set_description("Your documents, such a strong weapon....")
 deanery.set_item(documents)
 
 current_room = hall_1
+current_room.draw()
 backpack = []
 friends = []
 
@@ -145,6 +146,8 @@ while dead == False:
             answer = input('> ')
             if answer == 'y':
                 friends.append(inhabitant)
+                print(f"Congratulations! {inhabitant.name} is your friend now")
+                current_room.set_character(None)
             elif answer == 'n':
                 continue
     else:

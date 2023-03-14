@@ -1,10 +1,12 @@
 """Module Game"""
+import json
 class Room:
     """class Room"""
-    def __init__(self, name, floor) -> None:
+    def __init__(self, name, floor, map_number) -> None:
         self.name = name
         self.floor = floor
         self.links = []
+        self.map_number = map_number
         self.description = None
         self.character = None
         self.item = None
@@ -78,7 +80,12 @@ class Room:
         self.links.append((room, way))
 
     def draw(self):
-        pass
+        with open('map.json', 'r', encoding="utf8") as file:
+            data = json.load(file)
+            floor = data[str(self.floor)]
+            for line in floor[self.map_number]:
+                print(line)
+
 
 DEFEATED_ENEMIES = 0
 class Enemy:
