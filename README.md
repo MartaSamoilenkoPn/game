@@ -15,3 +15,15 @@ For some enemies you will also need friends. Every enemy has its own weakness.
 ## characters
 ![alt text](https://s3.eu-central-1.amazonaws.com/ucu.edu.ua/wp-content/uploads/sites/8/2018/12/5L9A8803-copy-e1638439392498-556x798.jpg)
 ![alt text](https://s3.eu-central-1.amazonaws.com/ucu.edu.ua/wp-content/uploads/sites/8/2018/11/5L9A9013-copy-e1638448997832-556x798.jpg)
+
+## map example
+```bash
+">---------Floor 1---------<",
+"|  Cafe   |               |",
+"|         |   Trapezna    |",
+"|-----  --|               |",
+"|         |___            |",
+"|______       |           |",
+"|stairs| (you)            |",
+"|      |      |           |",
+">------    ---------------<"
